@@ -405,5 +405,5 @@ if __name__ == "__main__":
         total_cycles=30, 
         data_per_cycle=600,
         anomaly_ratio=0.20,  # 20% anomali
-        out_path="data/telemetry_data.csv"
+        out_path="data/telemetry_data1.csv"
     )

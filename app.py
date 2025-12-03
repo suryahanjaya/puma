@@ -143,8 +143,8 @@ def fetch_latest_data(conn, limit=100):
 
 # --- 5. Halaman Utama Dashboard ---
 def run_dashboard():
-    st.set_page_config(page_title="UAV Anomaly Detection", layout="wide")
-    st.title("🛰️ UAV Real-Time Anomaly Detection")
+    st.set_page_config(page_title="PUMA", layout="wide")
+    st.title("🛰️ PUMA Dashboard")
     st.markdown(f"Memantau database: `{DB_PATH}` | Model: `{MODEL_PATH}`")
 
     history_limit = st.number_input(
