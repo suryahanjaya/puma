@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUMA - UAV MLOps Dashboard</title>
+    <link rel="stylesheet" href="static/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🛰️</div>
+                <div class="logo-text">
+                    <h1>PUMA</h1>
+                    <p>Predictive UAV Monitoring & Anomaly Detection</p>
+                </div>
+            </div>
+            <div class="header-info">
+                <div class="info-item">
+                    <span class="info-label">Database</span>
+                    <span class="info-value" id="db-status">●  Connected</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Model</span>
+                    <span class="info-value">LOF Novelty</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Last Update</span>
+                    <span class="info-value" id="last-update">--:--:--</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <!-- Status Cards -->
+        <section class="status-section">
+            <div class="status-card" id="system-status-card">
+                <div class="card-icon">🔴</div>
+                <div class="card-content">
+                    <h3>System Status</h3>
+                    <p class="status-value" id="system-status">NORMAL</p>
+                    <span class="status-label">ML Detection</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="card-icon">⏰</div>
+                <div class="card-content">
+                    <h3>Timestamp</h3>
+                    <p class="status-value" id="timestamp-value">--:--:--</p>
+                    <span class="status-label">Real-time</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="card-icon">📈</div>
+                <div class="card-content">
+                    <h3>Altitude</h3>
+                    <p class="status-value" id="altitude-value">0.0 m</p>
+                    <span class="status-label">Current Height</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="card-icon">🔋</div>
+                <div class="card-content">
+                    <h3>Battery Level</h3>
+                    <p class="status-value" id="battery-value">100.0 %</p>
+                    <span class="status-label" id="battery-label">Fully Charged</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="card-icon">✈️</div>
+                <div class="card-content">
+                    <h3>Flight Mode</h3>
+                    <p class="status-value" id="mode-value">Auto</p>
+                    <span class="status-label">Current Mode</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2>📊 Anomaly Score Timeline</h2>
+                    <div class="chart-controls">
+                        <select id="history-limit">
+                            <option value="50">Last 50 points</option>
+                            <option value="100">Last 100 points</option>
+                            <option value="150" selected>Last 150 points</option>
+                            <option value="300">Last 300 points</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="anomaly-chart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2>🚁 Flight Metrics</h2>
+                    <div class="legend">
+                        <span class="legend-item"><span class="legend-color" style="background: #3b82f6;"></span> Altitude</span>
+                        <span class="legend-item"><span class="legend-color" style="background: #10b981;"></span> Battery</span>
+                    </div>
+                </div>
+                <canvas id="metrics-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Data Table -->
+        <section class="table-section">
+            <div class="table-header">
+                <h2>📋 Recent Telemetry Data</h2>
+                <div class="table-info">
+                    <span id="anomaly-count">Anomalies: 0</span>
+                    <span id="total-records">Total: 0 records</span>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Status</th>
+                            <th>Anomaly Score</th>
+                            <th>Altitude (m)</th>
+                            <th>Battery (%)</th>
+                            <th>Mode</th>
+                            <th>System Status</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>PUMA Dashboard v1.0 | Developed by <strong>Surya Hanjaya</strong> | Real-time UAV Anomaly Detection System</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="static/js/dashboard.js"></script>
+</body>
+</html>

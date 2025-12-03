@@ -258,7 +258,7 @@ def generate_new_telemetry(template, state):
     # === 💣 INJEKSI ANOMALI DIAM-DIAM ===
     # 
     # Beri 20% kemungkinan anomali terjadi HANYA JIKA sedang terbang
-    if state["phase"] != "LANDED" and random.random() < 0.20: # 20% chance
+    if state["phase"] != "LANDED" and random.random() < 0.05: # 5% chance
         
         # [ PERUBAHAN DI SINI ]
         # Kita membuat 'battery_drop' lebih jarang terjadi (probabilitas 1/5 atau 20%)
@@ -278,16 +278,17 @@ def generate_new_telemetry(template, state):
 
         
         if anomaly_type == "motor_fail":
-            new_data["motor_rpm_3"] = 0  
-            new_data["motor_temp_3"] = 150.0 
-            new_data["event"] = "Motor 3 Failure"
+            motor_num = random.randint(1, 4)
+            new_data[f"motor_rpm_{motor_num}"] = 0  
+            new_data[f"motor_temp_{motor_num}"] = 150.0 
+            new_data["event"] = f"Motor {motor_num} Failure"
 
         elif anomaly_type == "sensor_glitch":
-            new_data["altitude"] += random.uniform(100, 300) 
+            new_data["altitude"] += random.uniform(50, 150)
             new_data["event"] = "Altitude Sensor Glitch"
 
         elif anomaly_type == "battery_drop":
-            new_data["battery_level"] = max(5, new_data["battery_level"] - 25) 
+            new_data["battery_level"] = max(5, new_data["battery_level"] - random.uniform(10, 20))
             new_data["event"] = "Sudden Battery Drop"
             
     # ========================================
