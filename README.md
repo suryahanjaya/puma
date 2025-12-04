@@ -1,19 +1,20 @@
 <div align="center">
 
-![PUMA Banner](assets/banner.png)
-
-# 🛰️ PUMA - UAV MLOps Dashboard
+# 🛰️ PUMA Dashboard
 ### **P**redictive **U**AV **M**onitoring & **A**nomaly Detection System
 
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)](https://plotly.com/)
+[![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Material UI](https://img.shields.io/badge/Material_UI-6.1-007FFF?style=for-the-badge&logo=mui&logoColor=white)](https://mui.com/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-**Real-time UAV telemetry monitoring with intelligent anomaly detection using Machine Learning**
+**Real-time UAV telemetry monitoring with intelligent anomaly detection powered by Machine Learning**
 
-[Features](#-features) • [Architecture](#-system-architecture) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack)
+[🚀 Features](#-features) • [🏗️ Architecture](#️-system-architecture) • [📦 Installation](#-installation) • [💻 Usage](#-usage) • [🛠️ Tech Stack](#️-tech-stack) • [📊 Model](#-model-details)
 
 ---
 
@@ -21,135 +22,232 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [System Architecture](#-system-architecture)
-- [Tech Stack](#-tech-stack)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Project Structure](#-project-structure)
-- [Data Pipeline](#-data-pipeline)
-- [Anomaly Detection](#-anomaly-detection)
-- [Model Details](#-model-details)
-- [Code Explanation](#-code-explanation)
-- [Developer](#-developer)
-- [License](#-license)
+- [🌟 Overview](#-overview)
+- [✨ Features](#-features)
+- [🏗️ System Architecture](#️-system-architecture)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📦 Installation](#-installation)
+- [💻 Usage](#-usage)
+- [📁 Project Structure](#-project-structure)
+- [🔄 Data Pipeline](#-data-pipeline)
+- [🎯 Anomaly Detection](#-anomaly-detection)
+- [📊 Model Details](#-model-details)
+- [💡 Technology Explanation](#-technology-explanation)
+- [🎓 Key Design Decisions](#-key-design-decisions)
+- [👨‍💻 Developer](#-developer)
+- [📄 License](#-license)
 
 ---
 
 ## 🌟 Overview
 
-**PUMA** is a comprehensive MLOps dashboard designed for real-time monitoring and anomaly detection in Unmanned Aerial Vehicle (UAV) telemetry data. The system leverages machine learning algorithms to identify abnormal flight patterns, sensor failures, and potential system malfunctions before they become critical.
+**PUMA Dashboard** is a modern, full-stack MLOps platform designed for **real-time monitoring and anomaly detection** in Unmanned Aerial Vehicle (UAV) telemetry data. The system combines cutting-edge web technologies with advanced machine learning algorithms to provide instant insights into UAV health and performance.
 
 ### 🎯 Key Objectives
 
-- **Real-time Monitoring**: Live visualization of UAV telemetry data
-- **Predictive Maintenance**: Early detection of system anomalies
-- **Data-Driven Insights**: Advanced feature engineering for accurate predictions
-- **Scalable Architecture**: Modular design for easy extension and deployment
+- ⚡ **Real-time Monitoring**: Live visualization of UAV telemetry with 1-second refresh rate
+- 🤖 **Predictive Maintenance**: ML-powered early detection of system anomalies
+- 📊 **Data-Driven Insights**: Advanced feature engineering for accurate predictions
+- 🎨 **Modern UI/UX**: Beautiful, responsive dashboard built with React and Material-UI
+- 🔧 **Scalable Architecture**: Modular design with REST API for easy integration
+
+### 🏆 What Makes PUMA Special?
+
+| Feature | Description |
+|---------|-------------|
+| **🎨 Modern Frontend** | React 18 + TypeScript + Material-UI for a premium user experience |
+| **⚡ Real-time Updates** | 1-second refresh rate for instant anomaly detection |
+| **🧠 Smart ML Pipeline** | 42 engineered features + LOF algorithm (88.7% ROC-AUC) |
+| **📱 Responsive Design** | Works seamlessly on desktop, tablet, and mobile |
+| **🔌 RESTful API** | Flask backend with CORS support for easy integration |
+| **💾 Concurrent Database** | SQLite with WAL mode for simultaneous read/write |
 
 ---
 
 ## ✨ Features
 
-### 🔴 Real-Time Dashboard
-- **Live Status Monitoring**: Instant updates on system health, altitude, battery, and flight mode
-- **Interactive Visualizations**: Dynamic charts using Plotly for anomaly scores and flight metrics
-- **Configurable History**: Adjustable data window (50-5000 data points)
+### 🎨 **Modern React Dashboard**
 
-### 🤖 Intelligent Anomaly Detection
-- **Local Outlier Factor (LOF)**: Advanced unsupervised learning algorithm
-- **Multi-Feature Analysis**: Monitors 42+ engineered features
-- **Real-time Scoring**: Continuous anomaly probability calculation
-- **9 Anomaly Types Detected**:
-  - ⚙️ Motor Failure
-  - 📡 Sensor Glitch
-  - 🔋 Battery Drop
-  - 📶 Communication Loss
-  - 🛰️ GPS Drift
-  - 📊 IMU Spike
-  - 🌡️ Overheating
-  - ⚠️ Stall Warning
-  - 🔊 High Vibration
+<div align="center">
 
-![Anomaly Types](assets/anomaly_types.png)
+```
+┌─────────────────────────────────────────────────────────────┐
+│  🔴 System Status  │  ⏰ Timestamp  │  📈 Altitude  │  🔋 Battery  │  ✈️ Mode  │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  📊 Anomaly Score Timeline                                   │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │         ╱╲                                           │    │
+│  │        ╱  ╲        ╱╲                               │    │
+│  │  ─────╱    ╲──────╱  ╲─────────────────────        │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                                                               │
+│  🚁 Flight Metrics (Altitude & Battery)                      │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │  5000m ┤                    ╱‾‾‾╲                   │    │
+│  │        │                   ╱     ╲                  │    │
+│  │     0m └──────────────────╱       ╲─────────────    │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                                                               │
+│  📋 Recent Telemetry Data                                    │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ Timestamp  │ Status  │ Score  │ Alt  │ Battery │...│    │
+│  │ 12:30:45   │ NORMAL  │ 0.23   │ 50m  │ 99.5%   │...│    │
+│  │ 12:30:46   │ ANOMALY │ 0.87   │ 51m  │ 99.4%   │...│    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+```
 
-### 📊 Advanced Data Pipeline
-- **Automated Data Generation**: Realistic UAV flight simulation
-- **Feature Engineering**: 42 derived features from raw telemetry
-- **Database Integration**: SQLite with WAL mode for concurrent access
-- **Historical Analysis**: Support for batch data processing
+</div>
+
+#### ✅ Dashboard Features:
+- **Live Status Cards**: Real-time system health, altitude, battery, timestamp, and flight mode
+- **Interactive Charts**: 
+  - 📊 Anomaly Score Timeline with configurable history (50-300 points)
+  - 🚁 Dual-axis Flight Metrics (Altitude + Battery)
+- **Data Table**: Recent telemetry with anomaly highlighting and pagination
+- **Auto-refresh**: 1-second update interval for true real-time monitoring
+- **Responsive Design**: Adapts to any screen size
+
+### 🤖 **Intelligent Anomaly Detection**
+
+Powered by **Local Outlier Factor (LOF)** algorithm:
+
+| Metric | Value |
+|--------|-------|
+| 🎯 **ROC-AUC Score** | 88.73% |
+| ✅ **Precision** | 84.86% |
+| 🔍 **Recall** | 80.09% |
+| 📊 **F1-Score** | 82.41% |
+
+#### Detected Anomaly Types:
+- ⚙️ **Motor Failure**: Motor RPM drops to 0, temperature spikes to 150°C
+- 📡 **Sensor Glitch**: Altitude sensor reports +50-150m error
+- 🔋 **Battery Drop**: Sudden 10-20% capacity loss
+
+### 🔌 **RESTful API Backend**
+
+Flask-powered API with the following endpoints:
+
+```http
+GET /telemetry/latest?history_limit=150
+GET /status
+GET /telemetry/anomalies
+GET /api/telemetry
+GET /api/stats
+GET /api/health
+```
+
+**Features**:
+- ✅ CORS enabled for cross-origin requests
+- ✅ Real-time anomaly prediction
+- ✅ Detailed error logging with stack traces
+- ✅ Read-only database connections for safety
 
 ---
 
 ## 🏗️ System Architecture
 
-![Architecture Diagram](assets/architecture.png)
-
-### Data Flow
+<div align="center">
 
 ```mermaid
-graph LR
-    A[UAV Sensors] --> B[Data Producer]
-    B --> C[SQLite Database]
-    C --> D[Feature Engineering]
-    D --> E[LOF Model]
-    E --> F[Streamlit Dashboard]
-    F --> G[Real-time Visualization]
+graph TB
+    subgraph "Frontend Layer"
+        A[React App<br/>TypeScript + Material-UI]
+        B[Vite Dev Server<br/>Port 5173]
+    end
+    
+    subgraph "Backend Layer"
+        C[Flask API Server<br/>Port 5000]
+        D[ML Pipeline<br/>Feature Engineering]
+        E[LOF Model<br/>Anomaly Detection]
+    end
+    
+    subgraph "Data Layer"
+        F[UAV Producer<br/>Telemetry Simulator]
+        G[SQLite Database<br/>WAL Mode]
+    end
+    
+    A -->|HTTP GET| C
+    C -->|Query| G
+    G -->|Raw Data| D
+    D -->|Engineered Features| E
+    E -->|Predictions| C
+    C -->|JSON Response| A
+    F -->|INSERT| G
+    
+    style A fill:#61DAFB,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#000,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#F7931E,stroke:#333,stroke-width:2px,color:#000
+    style G fill:#003B57,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
-### Components
+</div>
 
-1. **Data Producer** (`uav_producer.py`)
-   - Simulates real-time UAV telemetry
-   - Implements flight phases: CLIMB → CRUISE → DESCEND → LANDED
-   - Injects realistic anomalies (20% of data)
+### 📡 Data Flow
 
-2. **Feature Engineering Pipeline**
-   - Motor aggregations (RPM std/mean, temp std)
-   - Sensor disagreement metrics
-   - Power system calculations
-   - Rolling statistics (5-window)
-
-3. **Anomaly Detection Model**
-   - Local Outlier Factor (LOF) with novelty detection
-   - Trained on 17,970 samples
-   - 88.7% ROC-AUC score
-   - 84.9% precision, 80.1% recall
-
-4. **Dashboard** (`app.py`)
-   - Streamlit-based web interface
-   - Real-time data refresh (1.5s interval)
-   - Interactive Plotly charts
-   - Configurable data window
+1. **UAV Producer** (`uav_producer.py`) generates real-time telemetry → SQLite DB
+2. **Flask API** (`api_server.py`) queries database → Feature engineering → ML prediction
+3. **React Frontend** polls API every 1 second → Updates UI components
+4. **User** views real-time dashboard with anomaly alerts
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Core Technologies
+### 🎨 **Frontend Stack**
 
-| Technology | Purpose | Version |
+| Technology | Version | Purpose |
 |------------|---------|---------|
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | Core Language | 3.8+ |
-| ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white) | Dashboard Framework | Latest |
-| ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) | Machine Learning | Latest |
-| ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) | Data Manipulation | Latest |
-| ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white) | Numerical Computing | Latest |
-| ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat&logo=plotly&logoColor=white) | Interactive Visualization | Latest |
-| ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white) | Database | 3 |
+| ![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat&logo=react&logoColor=black) | 18.3.1 | UI Framework |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-5.6.2-3178C6?style=flat&logo=typescript&logoColor=white) | 5.6.2 | Type Safety |
+| ![Material-UI](https://img.shields.io/badge/Material_UI-6.1.8-007FFF?style=flat&logo=mui&logoColor=white) | 6.1.8 | Component Library |
+| ![Chart.js](https://img.shields.io/badge/Chart.js-4.4.7-FF6384?style=flat&logo=chart.js&logoColor=white) | 4.4.7 | Data Visualization |
+| ![Axios](https://img.shields.io/badge/Axios-1.7.9-5A29E4?style=flat&logo=axios&logoColor=white) | 1.7.9 | HTTP Client |
+| ![Vite](https://img.shields.io/badge/Vite-5.4.11-646CFF?style=flat&logo=vite&logoColor=white) | 5.4.11 | Build Tool |
 
-### Python Libraries
-
-```python
-pandas          # Data manipulation and analysis
-numpy           # Numerical computing
-scikit-learn    # Machine learning (LOF, StandardScaler)
-joblib          # Model serialization
-streamlit       # Web dashboard framework
-plotly          # Interactive visualizations
-sqlite3         # Database operations
+**Frontend Dependencies**:
+```json
+{
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "@mui/material": "^6.1.8",
+  "@emotion/react": "^11.14.0",
+  "@emotion/styled": "^11.14.0",
+  "chart.js": "^4.4.7",
+  "react-chartjs-2": "^5.3.0",
+  "axios": "^1.7.9"
+}
 ```
+
+### ⚙️ **Backend Stack**
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| ![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white) | 3.8+ | Core Language |
+| ![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat&logo=flask&logoColor=white) | 3.0+ | Web Framework |
+| ![Flask-CORS](https://img.shields.io/badge/Flask--CORS-5.0-000000?style=flat&logo=flask&logoColor=white) | 5.0+ | CORS Handling |
+| ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-F7931E?style=flat&logo=scikit-learn&logoColor=white) | 1.3+ | Machine Learning |
+| ![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=flat&logo=pandas&logoColor=white) | 2.0+ | Data Manipulation |
+| ![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=flat&logo=numpy&logoColor=white) | 1.24+ | Numerical Computing |
+| ![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=flat&logo=sqlite&logoColor=white) | 3 | Database |
+
+**Backend Dependencies** (`requirements.txt`):
+```
+flask>=3.0.0
+flask-cors>=5.0.0
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+joblib>=1.3.0
+```
+
+### 🗂️ **Database**
+
+- **SQLite 3** with **WAL (Write-Ahead Logging)** mode
+- Enables concurrent reads/writes
+- No "database is locked" errors
+- Perfect for embedded systems
 
 ---
 
@@ -157,596 +255,630 @@ sqlite3         # Database operations
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- pip package manager
-- Git (optional)
+- **Node.js** 18+ and **npm** 9+
+- **Python** 3.8+
+- **Git** (optional)
 
 ### Step-by-Step Setup
 
-1. **Clone or Download the Repository**
-   ```bash
-   git clone https://github.com/suryahanjaya/uav-mlops-dashboard.git
-   cd uav-mlops-dashboard
-   ```
+#### 1️⃣ Clone the Repository
 
-2. **Create Virtual Environment** (Recommended)
-   ```bash
-   python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   # Linux/Mac
-   source venv/bin/activate
-   ```
+```bash
+git clone https://github.com/suryahanjaya/puma.git
+cd puma
+```
 
-3. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+#### 2️⃣ Backend Setup (Python)
 
-4. **Verify Installation**
-   ```bash
-   python -c "import streamlit; import sklearn; import plotly; print('✅ All dependencies installed!')"
-   ```
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+```
+
+#### 3️⃣ Frontend Setup (React)
+
+```bash
+cd frontend
+
+# Install Node.js dependencies
+npm install
+
+# Return to root directory
+cd ..
+```
+
+#### 4️⃣ Verify Installation
+
+```bash
+# Check Python packages
+python -c "import flask, sklearn, pandas; print('✅ Backend ready!')"
+
+# Check Node.js packages
+cd frontend && npm list react && cd ..
+```
 
 ---
 
-## 🚀 Usage
+## 💻 Usage
 
-### Quick Start
+### 🚀 Quick Start (3 Terminals)
 
-#### 1. Start the Data Producer
-
-Open a terminal and run:
+#### Terminal 1: Start UAV Producer
 
 ```bash
 python src/uav_producer.py
 ```
 
-**Expected Output:**
+**Expected Output**:
 ```
 🚁 UAV Telemetry Producer dimulai...
 ==================================================
-Database target: data/uav_telemetry.db
+Database target: data\uav_telemetry.db
+CSV sumber: data\telemetry_data.csv
+✓ Ditemukan 45 kolom dari CSV
+✓ Tabel 'telemetry' berhasil dibuat/diverifikasi
 ✓ Mode WAL (Write-Ahead Logging) diaktifkan
-✈️  Memulai Misi: Target 5000m, Cruise 150 detik
+✈️  Memulai Misi: Target 5000m, Cruise 150 detik. Fase Awal: CLIMB
+
 🔄 Memulai loop produser (Ctrl+C untuk berhenti)...
-[2025/12/03 16:14:05] ✓ Fase: CLIMB | Alt: 30.5m | Battery: 99.9% | Status: Normal
+[2025/12/04 12:30:01] ✓ Fase: CLIMB | Alt: 30.5m | Battery: 99.9% | Status: Normal
+[2025/12/04 12:30:02] ✓ Fase: CLIMB | Alt: 60.2m | Battery: 99.8% | Status: Normal
 ```
 
-#### 2. Launch the Dashboard
-
-Open a **second terminal** and run:
+#### Terminal 2: Start Flask API Server
 
 ```bash
-streamlit run app.py
+python api_server.py
 ```
 
-**Expected Output:**
+**Expected Output**:
 ```
-You can now view your Streamlit app in your browser.
-
-  Local URL: http://localhost:8501
-  Network URL: http://192.168.1.100:8501
+Loading ML assets...
+✓ Loaded model with 42 features
+🚀 Starting PUMA Dashboard API Server...
+📊 Dashboard: http://localhost:5000
+🔌 API Endpoints:
+   - GET /telemetry/latest?history_limit=150
+   - GET /status
+   - GET /telemetry/anomalies
+   - GET /api/telemetry
+   - GET /api/stats
+   - GET /api/health
+ * Running on http://0.0.0.0:5000
 ```
 
-#### 3. Access the Dashboard
-
-Open your browser and navigate to: **http://localhost:8501**
-
-![Dashboard Preview](assets/dashboard.png)
-
-### Advanced Usage
-
-#### Generate Training Data
-
-To create a new dataset for model training:
+#### Terminal 3: Start React Frontend
 
 ```bash
-python src/generate_dummy_data.py
+cd frontend
+npm run dev
 ```
 
-This generates 18,000 data points (30 cycles × 600 points) with 20% anomalies.
+**Expected Output**:
+```
+  VITE v5.4.11  ready in 523 ms
 
-#### Train Custom Model
-
-Open and run the Jupyter notebook:
-
-```bash
-jupyter notebook src/train_model_adaptive.ipynb
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.1.100:5173/
+  ➜  press h + enter to show help
 ```
 
-The notebook includes:
-- Data loading and exploration
-- Feature engineering pipeline
-- Model training (Isolation Forest, LOF, Ensemble)
-- Hyperparameter optimization
-- Model evaluation and export
+#### 4️⃣ Access the Dashboard
+
+Open your browser and navigate to: **http://localhost:5173**
 
 ---
 
 ## 📁 Project Structure
 
 ```
-uav-mlops-dashboard/
+puma/
 │
-├── 📄 app.py                          # Main Streamlit dashboard
-├── 📄 requirements.txt                # Python dependencies
-├── 📄 README.md                       # This file
+├── 📄 api_server.py                    # Flask REST API backend
+├── 📄 requirements.txt                 # Python dependencies
+├── 📄 README.md                        # This file
 │
-├── 📂 data/                           # Data storage
-│   ├── uav_telemetry.db              # SQLite database (runtime)
-│   ├── telemetry_data.csv            # Training dataset
-│   ├── telemetry_data1.csv           # Alternative dataset
-│   └── feature_names.json            # Feature list for model
+├── 📂 frontend/                        # React frontend application
+│   ├── 📄 package.json                # Node.js dependencies
+│   ├── 📄 vite.config.ts              # Vite configuration
+│   ├── 📄 tsconfig.json               # TypeScript configuration
+│   ├── 📄 index.html                  # HTML entry point
+│   │
+│   └── 📂 src/                        # Source code
+│       ├── 📄 main.tsx                # React entry point
+│       ├── 📄 App.tsx                 # Main application component
+│       ├── 📄 App.css                 # Global styles
+│       │
+│       ├── 📂 components/             # React components
+│       │   ├── Header.tsx             # Dashboard header
+│       │   ├── StatusCard.tsx         # Status metric cards
+│       │   ├── AnomalyChart.tsx       # Anomaly score chart
+│       │   ├── MetricsChart.tsx       # Flight metrics chart
+│       │   └── TelemetryTable.tsx     # Data table
+│       │
+│       ├── 📂 services/               # API services
+│       │   └── api.ts                 # Axios HTTP client
+│       │
+│       ├── 📂 types/                  # TypeScript types
+│       │   └── uav.ts                 # UAV data interfaces
+│       │
+│       ├── 📂 theme/                  # UI theme
+│       │   └── theme.ts               # Material-UI theme config
+│       │
+│       └── 📂 utils/                  # Utility functions
+│           └── helpers.ts             # Helper functions
 │
-├── 📂 models/                         # Trained ML models
-│   ├── lof_novelty.joblib            # LOF anomaly detector
-│   ├── data_scaler.joblib            # StandardScaler for features
-│   ├── isolation_forest.joblib       # Isolation Forest model
-│   ├── eval_artifacts.joblib         # Evaluation metrics
-│   └── model_metadata.json           # Model training info
+├── 📂 data/                            # Data storage
+│   ├── uav_telemetry.db               # SQLite database (runtime)
+│   ├── telemetry_data.csv             # Training dataset
+│   └── feature_names.json             # ML feature list
 │
-├── 📂 src/                            # Source code
-│   ├── uav_producer.py               # Real-time data simulator
-│   ├── generate_dummy_data.py        # Batch data generator
-│   └── train_model_adaptive.ipynb    # Model training notebook
+├── 📂 models/                          # Trained ML models
+│   ├── lof_novelty.joblib             # LOF anomaly detector
+│   ├── data_scaler.joblib             # StandardScaler
+│   ├── isolation_forest.joblib        # Alternative model
+│   └── eval_artifacts.joblib          # Evaluation metrics
 │
-└── 📂 venv/                           # Virtual environment (local)
+├── 📂 src/                             # Backend source code
+│   ├── uav_producer.py                # Telemetry data simulator
+│   ├── generate_dummy_data.py         # Training data generator
+│   └── train_model_adaptive.ipynb     # Model training notebook
+│
+└── 📂 venv/                            # Python virtual environment
 ```
 
 ---
 
 ## 🔄 Data Pipeline
 
-![Feature Pipeline](assets/feature_pipeline.png)
+### 📊 Feature Engineering Pipeline
 
-### Raw Telemetry Features (36)
-
-#### 🛰️ Position & Navigation
-- `altitude`, `gps_alt`, `lidar_altitude`
-- `gps_lat`, `gps_lon`
-- `heading`, `pitch`, `roll`, `yaw`
-
-#### 🚁 Flight Dynamics
-- `ground_speed`, `airspeed`, `vertical_speed`
-- `throttle_position`, `payload_weight`
-
-#### 📊 IMU Sensors
-- `accel_x`, `accel_y`, `accel_z`
-- `gyro_x`, `gyro_y`, `gyro_z`
-
-#### ⚙️ Motor System
-- `motor_rpm_1/2/3/4`
-- `motor_temp_1/2/3/4`
-
-#### 🔋 Power System
-- `battery_level`, `battery_voltage`, `battery_current`
-- `temperature_battery`
-
-#### 📡 Communication
-- `sat_count`, `gps_fix_type`
-- `link_quality`, `signal_strength`
-- `obstacle_distance`
-
-### Engineered Features (6)
+The system transforms **36 raw telemetry features** into **42 engineered features**:
 
 ```python
-# 1. Motor Aggregations
-motor_rpm_std = std(motor_rpm_1, motor_rpm_2, motor_rpm_3, motor_rpm_4)
-motor_rpm_mean = mean(motor_rpm_1, motor_rpm_2, motor_rpm_3, motor_rpm_4)
-motor_temp_std = std(motor_temp_1, motor_temp_2, motor_temp_3, motor_temp_4)
+# Raw Features (36)
+raw_features = [
+    # Position & Navigation
+    'altitude', 'gps_alt', 'lidar_altitude',
+    'gps_lat', 'gps_lon',
+    'heading', 'pitch', 'roll', 'yaw',
+    
+    # Flight Dynamics
+    'ground_speed', 'airspeed', 'vertical_speed',
+    'throttle_position', 'payload_weight',
+    
+    # IMU Sensors
+    'accel_x', 'accel_y', 'accel_z',
+    'gyro_x', 'gyro_y', 'gyro_z',
+    
+    # Motor System
+    'motor_rpm_1', 'motor_rpm_2', 'motor_rpm_3', 'motor_rpm_4',
+    'motor_temp_1', 'motor_temp_2', 'motor_temp_3', 'motor_temp_4',
+    
+    # Power System
+    'battery_level', 'battery_voltage', 'battery_current',
+    'temperature_battery',
+    
+    # Communication
+    'sat_count', 'gps_fix_type',
+    'link_quality', 'signal_strength',
+    'obstacle_distance'
+]
 
-# 2. Sensor Disagreement
-alt_disagreement_std = std(altitude, gps_alt, lidar_altitude)
+# Engineered Features (6)
+engineered_features = [
+    'motor_rpm_std',           # Motor imbalance detection
+    'motor_rpm_mean',          # Average motor speed
+    'motor_temp_std',          # Motor temperature variance
+    'alt_disagreement_std',    # Sensor conflict detection
+    'power_draw',              # Battery voltage × current
+    'roll_accel_z_std',        # Vertical vibration (5-window rolling)
+    'roll_gyro_x_std'          # Pitch rate variance (5-window rolling)
+]
 
-# 3. Power System
-power_draw = battery_voltage × battery_current
-
-# 4. Rolling Statistics (5-window)
-roll_accel_z_std = rolling_std(accel_z, window=5)
-roll_gyro_x_std = rolling_std(gyro_x, window=5)
+# Total: 42 features
 ```
 
-### Total Features: **42**
+### 🔧 Feature Engineering Code
+
+```python
+def feature_engineering(df):
+    """
+    Creates 6 engineered features from raw telemetry.
+    MUST match training pipeline exactly!
+    """
+    df_eng = df.copy()
+    
+    # 1. Motor Aggregations
+    motor_rpm_cols = ['motor_rpm_1', 'motor_rpm_2', 'motor_rpm_3', 'motor_rpm_4']
+    df_eng['motor_rpm_std'] = df_eng[motor_rpm_cols].std(axis=1)
+    df_eng['motor_rpm_mean'] = df_eng[motor_rpm_cols].mean(axis=1)
+    
+    motor_temp_cols = ['motor_temp_1', 'motor_temp_2', 'motor_temp_3', 'motor_temp_4']
+    df_eng['motor_temp_std'] = df_eng[motor_temp_cols].std(axis=1)
+    
+    # 2. Sensor Disagreement
+    alt_cols = ['altitude', 'gps_alt', 'lidar_altitude']
+    df_eng['alt_disagreement_std'] = df_eng[alt_cols].std(axis=1)
+    
+    # 3. Power System
+    df_eng['power_draw'] = df_eng['battery_voltage'] * df_eng['battery_current']
+    
+    # 4. Rolling Statistics (requires sorted data)
+    df_eng = df_eng.sort_values(by='timestamp', ascending=True)
+    df_eng['roll_accel_z_std'] = df_eng['accel_z'].rolling(window=5, min_periods=1).std()
+    df_eng['roll_gyro_x_std'] = df_eng['gyro_x'].rolling(window=5, min_periods=1).std()
+    
+    return df_eng.fillna(0)
+```
 
 ---
 
 ## 🎯 Anomaly Detection
 
-### Algorithm: Local Outlier Factor (LOF)
+### 🧠 Local Outlier Factor (LOF) Algorithm
 
-LOF is an unsupervised anomaly detection algorithm that identifies outliers by measuring the local deviation of a data point with respect to its neighbors.
+LOF is an **unsupervised** anomaly detection algorithm that identifies outliers by measuring the **local density deviation** of a data point with respect to its neighbors.
 
-#### How It Works
+#### How LOF Works
 
-1. **K-Nearest Neighbors**: Find the 20 nearest neighbors for each data point
-2. **Local Reachability Density**: Calculate density around each point
-3. **LOF Score**: Compare local density to neighbors' densities
-4. **Anomaly Classification**: High LOF score = anomaly
+```
+1. For each data point:
+   ├─ Find K=20 nearest neighbors
+   ├─ Calculate local reachability density
+   ├─ Compare density to neighbors' densities
+   └─ Compute LOF score
+
+2. LOF Score Interpretation:
+   ├─ LOF ≈ 1.0  → Normal (similar density to neighbors)
+   ├─ LOF > 1.0  → Outlier (lower density than neighbors)
+   └─ LOF >> 1.0 → Strong anomaly
+```
 
 #### Model Configuration
 
 ```python
-LocalOutlierFactor(
-    n_neighbors=20,
-    contamination=0.2,    # Expected 20% anomalies
-    novelty=True,         # Enable prediction on new data
-    metric='euclidean'
+from sklearn.neighbors import LocalOutlierFactor
+
+lof = LocalOutlierFactor(
+    n_neighbors=20,        # Number of neighbors to consider
+    contamination=0.2,     # Expected 20% anomalies in training data
+    novelty=True,          # Enable prediction on new data
+    metric='euclidean',    # Distance metric
+    algorithm='auto'       # Automatic algorithm selection
 )
+
+# Training
+lof.fit(X_train_scaled)
+
+# Prediction
+predictions = lof.predict(X_new)        # 1 = normal, -1 = anomaly
+scores = -lof.decision_function(X_new)  # Higher = more anomalous
 ```
 
-### Anomaly Injection Strategy
+### 💣 Anomaly Injection Strategy
 
-The system injects 9 types of realistic anomalies during flight:
+The UAV producer simulates **3 types of realistic anomalies** during flight:
 
-| Anomaly Type | Trigger | Effect |
-|--------------|---------|--------|
-| **Motor Failure** | Random motor stops | RPM = 0, Temp = 150°C |
-| **Sensor Glitch** | Altitude spike | +100-300m error |
-| **Battery Drop** | Sudden discharge | -20-40% capacity |
-| **Communication Loss** | Signal degradation | Link quality < 10% |
-| **GPS Drift** | Position error | ±0.1° lat/lon shift |
-| **IMU Spike** | Sensor noise | 10x normal acceleration |
-| **Overheating** | Thermal stress | +30-60°C all motors |
-| **Stall Warning** | Low airspeed | Speed < 5 m/s |
-| **High Vibration** | Mechanical issue | 1.2-1.5x normal RPM |
+| Anomaly Type | Probability | Trigger Condition | Effect |
+|--------------|-------------|-------------------|--------|
+| **Motor Failure** | 40% | Random motor (1-4) | RPM → 0, Temp → 150°C |
+| **Sensor Glitch** | 40% | Altitude sensor | Altitude +50 to +150m |
+| **Battery Drop** | 20% | Sudden discharge | Battery -10% to -20% |
+
+**Code Implementation**:
+
+```python
+# 5% chance of anomaly per second during flight
+if state["phase"] != "LANDED" and random.random() < 0.05:
+    
+    # Weighted random selection
+    anomaly_type = random.choice([
+        "motor_fail", "sensor_glitch",  # 40% each
+        "motor_fail", "sensor_glitch",
+        "battery_drop"                   # 20%
+    ])
+    
+    if anomaly_type == "motor_fail":
+        motor_num = random.randint(1, 4)
+        new_data[f"motor_rpm_{motor_num}"] = 0
+        new_data[f"motor_temp_{motor_num}"] = 150.0
+        new_data["event"] = f"Motor {motor_num} Failure"
+        new_data["system_status"] = "Error"
+    
+    elif anomaly_type == "sensor_glitch":
+        new_data["altitude"] += random.uniform(50, 150)
+        new_data["event"] = "Altitude Sensor Glitch"
+        new_data["system_status"] = "Error"
+    
+    elif anomaly_type == "battery_drop":
+        new_data["battery_level"] -= random.uniform(10, 20)
+        new_data["event"] = "Sudden Battery Drop"
+        new_data["system_status"] = "Warning"
+```
 
 ---
 
 ## 📊 Model Details
 
-### Training Dataset
+### 📈 Training Dataset
 
 - **Total Samples**: 17,970
 - **Features**: 42 (36 raw + 6 engineered)
 - **Anomaly Ratio**: 20.02%
 - **Training Date**: 2025-11-11
+- **Train/Test Split**: 65% / 35% (stratified)
 
-### Performance Metrics
+### 🎯 Performance Metrics
 
 #### LOF Model (Selected)
 
-| Metric | Score |
-|--------|-------|
-| **ROC-AUC** | 88.73% |
-| **Precision** | 84.86% |
-| **Recall** | 80.09% |
-| **F1-Score** | 82.41% |
+| Metric | Score | Interpretation |
+|--------|-------|----------------|
+| **ROC-AUC** | 88.73% | Excellent discrimination ability |
+| **Precision** | 84.86% | 85% of predicted anomalies are true anomalies |
+| **Recall** | 80.09% | Detects 80% of all actual anomalies |
+| **F1-Score** | 82.41% | Good balance of precision and recall |
 
-**Confusion Matrix:**
+**Confusion Matrix**:
 ```
                 Predicted
               Normal  Anomaly
-Actual Normal   2361     514
-      Anomaly    716    2881
+Actual Normal   2361     514    (82.1% specificity)
+      Anomaly    716    2881    (80.1% recall)
 ```
 
-#### Comparison with Other Models
+#### Model Comparison
 
-| Model | ROC-AUC | Precision | Recall | F1-Score |
-|-------|---------|-----------|--------|----------|
-| **LOF** | **88.73%** | **84.86%** | **80.09%** | **82.41%** |
-| Isolation Forest | 65.03% | 57.65% | 96.83% | 72.27% |
-| Ensemble | 70.94% | 60.76% | 91.58% | 73.05% |
+| Model | ROC-AUC | Precision | Recall | F1-Score | Selected? |
+|-------|---------|-----------|--------|----------|-----------|
+| **LOF** | **88.73%** | **84.86%** | **80.09%** | **82.41%** | ✅ **Yes** |
+| Isolation Forest | 65.03% | 57.65% | 96.83% | 72.27% | ❌ No |
+| Ensemble | 70.94% | 60.76% | 91.58% | 73.05% | ❌ No |
 
-**Winner**: LOF provides the best balance of precision and recall.
+**Winner**: LOF provides the best **precision-recall balance**, minimizing false positives in critical UAV systems.
 
 ---
 
-## 💻 Code Explanation
+## 💡 Technology Explanation
 
-### 1. Data Producer (`uav_producer.py`)
+### 🎨 **Why React + TypeScript?**
 
-**Purpose**: Simulates real-time UAV telemetry with realistic flight phases and anomalies.
+**React 18** is the most popular UI library for building modern web applications:
 
-#### Key Functions
+- ✅ **Component-Based**: Reusable UI components (StatusCard, AnomalyChart, etc.)
+- ✅ **Virtual DOM**: Fast re-rendering for real-time updates
+- ✅ **Hooks**: `useState`, `useEffect` for state management and side effects
+- ✅ **Ecosystem**: Huge library ecosystem (Material-UI, Chart.js, Axios)
 
-```python
-def init_db():
-    """
-    Initializes SQLite database with WAL mode for concurrent access.
-    Creates telemetry table with 46 columns.
-    """
-    # Enable Write-Ahead Logging to prevent database locks
-    cursor.execute("PRAGMA journal_mode=WAL;")
+**TypeScript** adds type safety:
+
+```typescript
+// Type-safe API response
+interface UAVTelemetry {
+    timestamp: number;
+    dt: string;
+    altitude: number;
+    battery_level: number;
+    is_anomaly: boolean;
+    anomaly_score: number;
+}
+
+// Compile-time error if wrong type
+const data: UAVTelemetry = {
+    timestamp: "wrong type",  // ❌ Error: Type 'string' is not assignable to type 'number'
+    // ...
+};
 ```
 
-```python
-def generate_new_telemetry(template, state):
-    """
-    Generates new telemetry data based on flight state.
-    
-    Flight Phases:
-    - CLIMB: Ascend at 30 m/s to 5000m
-    - CRUISE: Maintain altitude for 2-3 minutes
-    - DESCEND: Descend at -25 m/s to ground
-    - LANDED: Reset and prepare for next mission
-    
-    Returns: (new_data, updated_state)
-    """
+### 🎨 **Why Material-UI (MUI)?**
+
+Material-UI is Google's design system for React:
+
+- ✅ **Pre-built Components**: Cards, Tables, Charts, Buttons, etc.
+- ✅ **Theming**: Customizable color schemes and typography
+- ✅ **Responsive**: Mobile-first design out of the box
+- ✅ **Accessibility**: ARIA labels and keyboard navigation
+
+**Example**:
+
+```tsx
+<Card>
+  <CardContent>
+    <Typography variant="h5">System Status</Typography>
+    <Typography variant="h4" color="primary">NORMAL</Typography>
+  </CardContent>
+</Card>
 ```
 
-#### Flight State Machine
+### ⚡ **Why Vite?**
 
-```python
-if phase == "CLIMB":
-    altitude += climb_rate (30 m/s)
-    if altitude >= 5000m:
-        phase = "CRUISE"
+Vite is a next-generation build tool:
 
-elif phase == "CRUISE":
-    altitude ≈ 5000m ± 1.5m
-    if elapsed_time >= cruise_duration:
-        phase = "DESCEND"
+- ✅ **Instant Server Start**: No bundling in dev mode
+- ✅ **Lightning Fast HMR**: Hot Module Replacement in <50ms
+- ✅ **Optimized Build**: Rollup-based production builds
+- ✅ **TypeScript Support**: Built-in TypeScript compilation
 
-elif phase == "DESCEND":
-    altitude += descend_rate (-25 m/s)
-    if altitude <= 0:
-        phase = "LANDED"
-
-elif phase == "LANDED":
-    altitude = 0
-    if battery_recharged:
-        phase = "CLIMB"  # New mission
+**Speed Comparison**:
+```
+Webpack: 10-30 seconds startup
+Vite:    0.5-2 seconds startup  ⚡ 10-60x faster!
 ```
 
-#### Anomaly Injection
+### 🔌 **Why Flask?**
+
+Flask is a lightweight Python web framework:
+
+- ✅ **Minimalist**: Only what you need, no bloat
+- ✅ **Flexible**: Easy to add extensions (Flask-CORS)
+- ✅ **Python Ecosystem**: Direct access to scikit-learn, pandas, numpy
+- ✅ **RESTful**: Perfect for building JSON APIs
+
+**Example**:
 
 ```python
-# 20% probability during flight
-if phase != "LANDED" and random.random() < 0.20:
-    anomaly_type = random.choice([
-        "motor_fail", "sensor_glitch", "battery_drop",
-        "communication_loss", "gps_drift", "imu_spike",
-        "overheating", "stall_warning", "vibration_high"
-    ])
+@app.route('/telemetry/latest')
+def get_latest_telemetry():
+    # Query database
+    df = pd.read_sql_query("SELECT * FROM telemetry LIMIT 150", conn)
     
-    if anomaly_type == "motor_fail":
-        motor_rpm_3 = 0
-        motor_temp_3 = 150.0
-        event = "Motor 3 Failure"
+    # Predict anomalies
+    df_results = predict_anomalies(df)
+    
+    # Return JSON
+    return jsonify({
+        'latest': df_results.iloc[0].to_dict(),
+        'history': df_results.to_dict('records')
+    })
 ```
 
----
+### 📊 **Why Chart.js?**
 
-### 2. Dashboard (`app.py`)
+Chart.js is a powerful charting library:
 
-**Purpose**: Real-time visualization and anomaly detection interface.
+- ✅ **Interactive**: Hover tooltips, zoom, pan
+- ✅ **Responsive**: Adapts to container size
+- ✅ **Customizable**: Full control over colors, labels, axes
+- ✅ **Performance**: Handles 1000+ data points smoothly
 
-#### Key Components
+**Example**:
 
-##### A. Asset Loading (Cached)
-
-```python
-@st.cache_resource
-def load_assets():
-    """
-    Loads ML model, scaler, and feature names.
-    Cached to avoid reloading on every refresh.
-    """
-    model = joblib.load("models/lof_novelty.joblib")
-    scaler = joblib.load("models/data_scaler.joblib")
-    feature_names = json.load("data/feature_names.json")
-    return model, scaler, feature_names
+```tsx
+<Line
+  data={{
+    labels: data.map(d => new Date(d.dt).toLocaleTimeString()),
+    datasets: [{
+      label: 'Anomaly Score',
+      data: data.map(d => d.anomaly_score),
+      borderColor: '#DC143C',
+      fill: true
+    }]
+  }}
+/>
 ```
 
-##### B. Feature Engineering (Identical to Training)
+### 💾 **Why SQLite with WAL Mode?**
+
+SQLite is a serverless, embedded database:
+
+- ✅ **Zero Configuration**: No server setup required
+- ✅ **Single File**: Entire database in one `.db` file
+- ✅ **ACID Compliant**: Reliable transactions
+- ✅ **WAL Mode**: Write-Ahead Logging enables concurrent reads/writes
+
+**WAL Mode Benefits**:
 
 ```python
-def feature_engineering(df):
-    """
-    Creates 6 engineered features from raw data.
-    MUST match training pipeline exactly!
-    """
-    # Motor aggregations
-    df['motor_rpm_std'] = df[motor_rpm_cols].std(axis=1)
-    df['motor_rpm_mean'] = df[motor_rpm_cols].mean(axis=1)
-    df['motor_temp_std'] = df[motor_temp_cols].std(axis=1)
-    
-    # Sensor disagreement
-    df['alt_disagreement_std'] = df[alt_cols].std(axis=1)
-    
-    # Power system
-    df['power_draw'] = df['battery_voltage'] * df['battery_current']
-    
-    # Rolling statistics (requires sorted data)
-    df = df.sort_values('timestamp')
-    df['roll_accel_z_std'] = df['accel_z'].rolling(5, min_periods=1).std()
-    df['roll_gyro_x_std'] = df['gyro_x'].rolling(5, min_periods=1).std()
-    
-    return df.fillna(0)
-```
-
-##### C. Anomaly Prediction
-
-```python
-def predict_anomalies(df, model, scaler, feature_names):
-    """
-    Performs feature engineering, scaling, and prediction.
-    """
-    # 1. Feature engineering
-    df_engineered = feature_engineering(df)
-    
-    # 2. Align features (ensure correct order)
-    df_aligned = df_engineered[feature_names]
-    
-    # 3. Scale features
-    df_scaled = scaler.transform(df_aligned)
-    
-    # 4. Predict
-    predictions = model.predict(df_scaled)  # 1=normal, -1=anomaly
-    scores = -model.decision_function(df_scaled)  # Higher=more anomalous
-    
-    # 5. Add results to original dataframe
-    df['is_anomaly'] = (predictions == -1).astype(int)
-    df['anomaly_score'] = scores
-    
-    return df
-```
-
-##### D. Real-Time Dashboard Loop
-
-```python
-def run_dashboard():
-    """
-    Main dashboard loop with 1.5s refresh rate.
-    """
-    while True:
-        # 1. Connect to database (read-only mode)
-        db_uri = f'file:{DB_PATH}?mode=ro'
-        conn = sqlite3.connect(db_uri, uri=True)
-        
-        # 2. Fetch latest N rows
-        raw_data = fetch_latest_data(conn, limit=history_limit)
-        
-        # 3. Predict anomalies
-        df_results = predict_anomalies(raw_data, model, scaler, feature_names)
-        
-        # 4. Display metrics
-        latest = df_results.iloc[0]
-        if latest['is_anomaly'] == 1:
-            st.metric("System Status", "🔴 ANOMALY")
-        else:
-            st.metric("System Status", "🟢 NORMAL")
-        
-        # 5. Plot charts
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=df_plot['dt'],
-            y=df_plot['anomaly_score'],
-            name='Anomaly Score'
-        ))
-        st.plotly_chart(fig)
-        
-        # 6. Wait before next refresh
-        time.sleep(1.5)
-```
-
----
-
-### 3. Data Generator (`generate_dummy_data.py`)
-
-**Purpose**: Creates large training datasets with controlled anomaly ratios.
-
-#### Key Features
-
-```python
-def generate_data_v3(total_cycles=30, data_per_cycle=600, anomaly_ratio=0.20):
-    """
-    Generates complete flight cycles with precise anomaly control.
-    
-    Parameters:
-    - total_cycles: Number of complete missions (30)
-    - data_per_cycle: Data points per mission (600)
-    - anomaly_ratio: Target anomaly percentage (20%)
-    
-    Output: 30 × 600 = 18,000 rows with ~3,600 anomalies
-    """
-```
-
-#### Dynamic Anomaly Injection
-
-```python
-# Calculate remaining anomalies needed
-remaining_data = total_data_points - len(rows)
-remaining_anomalies = target_anomalies - anomaly_count
-
-# Adjust probability to hit exact target
-current_probability = remaining_anomalies / remaining_data
-
-if random.random() < current_probability * 1.2:
-    inject_anomaly()
-```
-
-This ensures the final dataset has **exactly 20% anomalies** (±0.5%).
-
----
-
-### 4. Model Training (`train_model_adaptive.ipynb`)
-
-**Purpose**: Jupyter notebook for model development and evaluation.
-
-#### Workflow
-
-1. **Data Loading**
-   ```python
-   df = pd.read_csv('data/telemetry_data.csv')
-   print(f"Loaded {len(df)} rows")
-   ```
-
-2. **Feature Engineering**
-   ```python
-   df_engineered = feature_engineering(df)
-   feature_names = [list of 42 features]
-   ```
-
-3. **Train-Test Split**
-   ```python
-   X_train, X_test, y_train, y_test = train_test_split(
-       X, y, test_size=0.35, stratify=y, random_state=42
-   )
-   ```
-
-4. **Model Training**
-   ```python
-   lof = LocalOutlierFactor(
-       n_neighbors=20,
-       contamination=0.2,
-       novelty=True
-   )
-   lof.fit(X_train_scaled)
-   ```
-
-5. **Hyperparameter Optimization**
-   ```python
-   # Find optimal decision threshold
-   best_threshold = optimize_threshold(
-       scores, y_test, metric='f1'
-   )
-   ```
-
-6. **Model Export**
-   ```python
-   joblib.dump(lof, 'models/lof_novelty.joblib')
-   joblib.dump(scaler, 'models/data_scaler.joblib')
-   json.dump(feature_names, 'data/feature_names.json')
-   ```
-
----
-
-## 🎓 Key Learnings & Design Decisions
-
-### 1. **Why LOF over Isolation Forest?**
-
-- **LOF**: Better precision (84.86% vs 57.65%)
-- **Isolation Forest**: Better recall (96.83% vs 80.09%)
-- **Decision**: LOF chosen to minimize false positives in critical UAV systems
-
-### 2. **Why WAL Mode for SQLite?**
-
-```python
+# Enable WAL mode
 cursor.execute("PRAGMA journal_mode=WAL;")
+
+# Now:
+# - Producer can INSERT while API reads
+# - No "database is locked" errors
+# - Better performance (writes don't block reads)
 ```
 
-- Allows concurrent reads/writes
-- Producer writes while dashboard reads
-- No "database is locked" errors
+---
 
-### 3. **Why Feature Engineering?**
+## 🎓 Key Design Decisions
+
+### 1️⃣ **Why LOF over Isolation Forest?**
+
+| Metric | LOF | Isolation Forest |
+|--------|-----|------------------|
+| Precision | 84.86% | 57.65% |
+| Recall | 80.09% | 96.83% |
+| **Decision** | ✅ **Selected** | ❌ Rejected |
+
+**Reason**: In UAV systems, **false positives are costly** (unnecessary emergency landings). LOF's higher precision (84.86%) minimizes false alarms while still detecting 80% of anomalies.
+
+### 2️⃣ **Why 1-Second Refresh Rate?**
+
+```typescript
+useEffect(() => {
+  const interval = setInterval(() => {
+    fetchData();
+  }, 1000);  // 1 second = 1000ms
+  
+  return () => clearInterval(interval);
+}, []);
+```
+
+**Reasoning**:
+- ✅ **Real-time Feel**: Matches UAV telemetry update rate (1 Hz)
+- ✅ **Smooth Charts**: Animations look fluid
+- ✅ **Low Overhead**: API response time ~50-100ms, plenty of headroom
+- ❌ **Not 100ms**: Would overload server with 10 requests/second
+
+### 3️⃣ **Why Feature Engineering?**
 
 Raw sensors alone miss complex patterns:
-- **Motor imbalance**: Detected via `motor_rpm_std`
-- **Sensor conflicts**: Detected via `alt_disagreement_std`
-- **Power issues**: Detected via `power_draw`
-- **Vibration trends**: Detected via rolling statistics
 
-### 4. **Why 1.5s Refresh Rate?**
+| Feature | Detects |
+|---------|---------|
+| `motor_rpm_std` | Motor imbalance (one motor failing) |
+| `alt_disagreement_std` | Sensor conflicts (GPS vs barometer vs lidar) |
+| `power_draw` | Power system issues (voltage drop under load) |
+| `roll_accel_z_std` | Vibration trends (bearing wear, propeller damage) |
 
-- Balance between responsiveness and CPU usage
-- Matches typical UAV telemetry update rate (1 Hz)
-- Allows smooth chart animations
+**Example**: A motor failure might not show in individual RPM values, but `motor_rpm_std` will spike dramatically.
+
+### 4️⃣ **Why TypeScript over JavaScript?**
+
+```typescript
+// TypeScript catches errors at compile-time
+function fetchData(limit: number): Promise<UAVTelemetry[]> {
+  return api.get('/telemetry/latest', { params: { limit } });
+}
+
+fetchData("150");  // ❌ Error: Argument of type 'string' is not assignable to parameter of type 'number'
+
+// JavaScript only fails at runtime
+function fetchData(limit) {
+  return api.get('/telemetry/latest', { params: { limit } });
+}
+
+fetchData("150");  // ✅ No error, but API might fail!
+```
+
+**Benefits**:
+- ✅ **Early Error Detection**: Catch bugs before deployment
+- ✅ **Better IDE Support**: Autocomplete, refactoring, go-to-definition
+- ✅ **Self-Documenting**: Types serve as inline documentation
+
+### 5️⃣ **Why Material-UI Theme?**
+
+```typescript
+// Centralized theme configuration
+const theme = createTheme({
+  palette: {
+    primary: { main: '#DC143C' },      // PUMA Red
+    secondary: { main: '#FFD700' },    // Gold accent
+  },
+  typography: {
+    fontFamily: '"Inter", "Roboto", sans-serif',
+  }
+});
+
+// Consistent styling across all components
+<Button color="primary">Click Me</Button>
+<Typography color="primary">ANOMALY</Typography>
+```
+
+**Benefits**:
+- ✅ **Consistency**: Same colors/fonts everywhere
+- ✅ **Easy Updates**: Change theme once, updates everywhere
+- ✅ **Responsive**: Breakpoints handled automatically
 
 ---
 
@@ -757,10 +889,10 @@ Raw sensors alone miss complex patterns:
 ### **Surya Hanjaya**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/surya-hanjaya/)
-[![GitHub](https://img.shields.io/badge/GitHub-333333?style=for-the-badge&logo=github&logoColor=white)](https://github.com/suryahanjaya)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/suryahanjaya)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/h4njy/)
 
-**Machine Learning Engineer | Data Scientist | UAV Enthusiast**
+**Full-Stack Developer | Machine Learning Engineer | UAV Enthusiast**
 
 *Passionate about building intelligent systems that make autonomous vehicles safer and more reliable.*
 
@@ -770,7 +902,7 @@ Raw sensors alone miss complex patterns:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see below for details:
+This project is licensed under the **MIT License**:
 
 ```
 MIT License
@@ -798,29 +930,12 @@ SOFTWARE.
 
 ---
 
-## 🙏 Acknowledgments
-
-- **Streamlit Team** - For the amazing dashboard framework
-- **scikit-learn Contributors** - For robust ML algorithms
-- **Plotly** - For beautiful interactive visualizations
-- **UNESA** - For academic support and resources
-
----
-
-## 📞 Contact & Support
-
-Have questions or suggestions? Feel free to reach out!
-
-- 📧 Email: [Contact via LinkedIn](https://www.linkedin.com/in/surya-hanjaya/)
-- 💬 Issues: [GitHub Issues](https://github.com/suryahanjaya/uav-mlops-dashboard/issues)
-- 🌟 Star this repo if you find it useful!
-
----
-
 <div align="center">
+
+### ⭐ Star this repo if you find it useful!
 
 **Made with ❤️ by Surya Hanjaya**
 
-⭐ **Star this repository if you found it helpful!** ⭐
+🇮🇩 **Indonesia** | 🛰️ **UAV Technology** | 🤖 **Machine Learning**
 
 </div>
