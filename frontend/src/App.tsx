@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline, Box, Container, CircularProgress, Typography } from '@mui/material';
+
 import { theme, colors } from './theme/theme';
 import Header from './components/Header';
 import StatusCard from './components/StatusCard';
@@ -16,7 +17,6 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [historyLimit, setHistoryLimit] = useState<number>(150);
   const [lastUpdate, setLastUpdate] = useState<string>('--:--:--');
-  const [updateKey, setUpdateKey] = useState<number>(0); // Force re-render key
 
   // Fetch data from API
   const fetchData = async () => {
@@ -45,9 +45,6 @@ function App() {
         console.error('❌ Database status error:', error);
         setDbStatus(false);
       }
-
-      // Force re-render
-      setUpdateKey(prev => prev + 1);
 
       setLoading(false);
     } catch (error) {
@@ -104,7 +101,7 @@ function App() {
         >
           <Box sx={{ textAlign: 'center' }}>
             <CircularProgress size={60} sx={{ color: colors.primary.main }} />
-            <Typography variant="h6" sx={{ mt: 2, color: colors.text.primary }}>
+            <Typography variant="h6" sx={{ color: colors.text.secondary }}>
               Loading PUMA Dashboard...
             </Typography>
           </Box>
@@ -119,7 +116,7 @@ function App() {
       <Box
         sx={{
           minHeight: '100vh',
-          background: '#FFFFFF',
+          background: 'linear-gradient(180deg, #FFF0F0 0%, #FFFFFF 100%)',
         }}
       >
         {/* Header */}
@@ -131,17 +128,16 @@ function App() {
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 4 }}>
             <Box sx={{ flex: '1 1 calc(20% - 24px)', minWidth: '200px' }}>
               <StatusCard
-                icon="🔴"
                 title="System Status"
                 value={latestData?.is_anomaly ? 'ANOMALY' : 'NORMAL'}
                 label="ML Detection"
                 color={latestData?.is_anomaly ? colors.primary.main : colors.status.normal}
                 isAnomaly={Boolean(latestData?.is_anomaly)}
+                isSystemStatus={true}
               />
             </Box>
             <Box sx={{ flex: '1 1 calc(20% - 24px)', minWidth: '200px' }}>
               <StatusCard
-                icon="⏰"
                 title="Timestamp"
                 value={latestData ? (latestData.dt ? new Date(latestData.dt).toLocaleTimeString('id-ID') : new Date(latestData.timestamp * 1000).toLocaleTimeString('id-ID')) : '--:--:--'}
                 label="Real-time"
@@ -149,7 +145,6 @@ function App() {
             </Box>
             <Box sx={{ flex: '1 1 calc(20% - 24px)', minWidth: '200px' }}>
               <StatusCard
-                icon="📈"
                 title="Altitude"
                 value={`${latestData?.altitude.toFixed(1) || '0.0'} m`}
                 label="Current Height"
@@ -157,7 +152,6 @@ function App() {
             </Box>
             <Box sx={{ flex: '1 1 calc(20% - 24px)', minWidth: '200px' }}>
               <StatusCard
-                icon="🔋"
                 title="Battery Level"
                 value={`${latestData?.battery_level.toFixed(1) || '100.0'} %`}
                 label={getBatteryLabel(latestData?.battery_level || 100)}
@@ -166,7 +160,6 @@ function App() {
             </Box>
             <Box sx={{ flex: '1 1 calc(20% - 24px)', minWidth: '200px' }}>
               <StatusCard
-                icon="✈️"
                 title="Flight Mode"
                 value={latestData?.flight_mode || 'Auto'}
                 label="Current Mode"
@@ -179,12 +172,13 @@ function App() {
             {telemetryData.length > 0 ? (
               <>
                 <AnomalyChart
-                  key={`anomaly-${updateKey}`}
                   data={telemetryData}
                   historyLimit={historyLimit}
                   onHistoryLimitChange={setHistoryLimit}
                 />
-                <MetricsChart key={`metrics-${updateKey}`} data={telemetryData} />
+                <MetricsChart
+                  data={telemetryData}
+                />
               </>
             ) : (
               <Box sx={{
@@ -195,7 +189,7 @@ function App() {
                 border: `2px solid ${colors.border.light}`
               }}>
                 <Typography variant="h6" sx={{ color: colors.text.secondary }}>
-                  📊 Loading chart data...
+                  Loading chart data...
                 </Typography>
                 <Typography variant="body2" sx={{ color: colors.text.secondary, mt: 1 }}>
                   Waiting for telemetry data from backend
@@ -207,7 +201,6 @@ function App() {
           {/* Telemetry Table */}
           {telemetryData.length > 0 ? (
             <TelemetryTable
-              key={`table-${updateKey}`}
               data={telemetryData}
               anomalyCount={anomalyCount}
               totalRecords={totalRecords}
@@ -221,7 +214,7 @@ function App() {
               border: `2px solid ${colors.border.light}`
             }}>
               <Typography variant="h6" sx={{ color: colors.text.secondary }}>
-                📋 No telemetry data available
+                No telemetry data available
               </Typography>
               <Typography variant="body2" sx={{ color: colors.text.secondary, mt: 1 }}>
                 Make sure uav_producer.py and api_server.py are running

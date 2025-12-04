@@ -19,6 +19,8 @@ const MetricsChart: React.FC<MetricsChartProps> = ({ data }) => {
                 borderColor: colors.status.info,
                 backgroundColor: `${colors.status.info}20`,
                 borderWidth: 2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
                 fill: true,
                 tension: 0.4,
                 yAxisID: 'y',
@@ -29,6 +31,8 @@ const MetricsChart: React.FC<MetricsChartProps> = ({ data }) => {
                 borderColor: colors.status.normal,
                 backgroundColor: `${colors.status.normal}20`,
                 borderWidth: 2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
                 fill: true,
                 tension: 0.4,
                 yAxisID: 'y1',
@@ -71,6 +75,7 @@ const MetricsChart: React.FC<MetricsChartProps> = ({ data }) => {
                 type: 'linear' as const,
                 display: true,
                 position: 'left' as const,
+                min: 0, // Start from 0
                 grid: {
                     color: 'rgba(59, 130, 246, 0.1)',
                 },
@@ -87,6 +92,8 @@ const MetricsChart: React.FC<MetricsChartProps> = ({ data }) => {
                 type: 'linear' as const,
                 display: true,
                 position: 'right' as const,
+                min: 0,
+                max: 100,
                 grid: {
                     drawOnChartArea: false,
                 },
@@ -108,7 +115,7 @@ const MetricsChart: React.FC<MetricsChartProps> = ({ data }) => {
                 {/* Chart Header */}
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                     <Typography variant="h5" sx={{ fontWeight: 600, color: colors.text.primary }}>
-                        🚁 Flight Metrics
+                        Flight Metrics
                     </Typography>
 
                     {/* Legend */}

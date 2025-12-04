@@ -62,7 +62,7 @@ const TelemetryTable: React.FC<TelemetryTableProps> = ({
                 {/* Table Header */}
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                     <Typography variant="h5" sx={{ fontWeight: 600, color: colors.text.primary }}>
-                        📋 Recent Telemetry Data
+                        Recent Telemetry Data
                     </Typography>
 
                     <Box sx={{ display: 'flex', gap: 2 }}>

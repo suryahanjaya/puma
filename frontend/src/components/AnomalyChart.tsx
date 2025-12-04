@@ -125,7 +125,7 @@ const AnomalyChart: React.FC<AnomalyChartProps> = ({
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <Typography variant="h5" sx={{ fontWeight: 600, color: colors.text.primary }}>
-                            📊 Anomaly Score Timeline
+                            Anomaly Score Timeline
                         </Typography>
                     </Box>
 
@@ -143,10 +143,10 @@ const AnomalyChart: React.FC<AnomalyChartProps> = ({
                                 },
                             }}
                         >
-                            <MenuItem value={50}>Last 50 points</MenuItem>
-                            <MenuItem value={100}>Last 100 points</MenuItem>
-                            <MenuItem value={150}>Last 150 points</MenuItem>
-                            <MenuItem value={300}>Last 300 points</MenuItem>
+                            <MenuItem value={50}>Last 50 data</MenuItem>
+                            <MenuItem value={100}>Last 100 data</MenuItem>
+                            <MenuItem value={150}>Last 150 data</MenuItem>
+                            <MenuItem value={300}>Last 300 data</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
