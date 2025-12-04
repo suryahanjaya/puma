@@ -192,8 +192,124 @@ def health_check():
     })
 
 
+@app.route('/telemetry/latest')
+def get_latest_telemetry():
+    """
+    Get latest telemetry with history
+    Query params:
+    - history_limit: number of historical records (default: 150)
+    """
+    try:
+        history_limit = int(request.args.get('history_limit', 150))
+        print(f"📥 Fetching latest telemetry with history_limit={history_limit}")
+        
+        # Connect to database
+        db_uri = f'file:{DB_PATH}?mode=ro'
+        conn = sqlite3.connect(db_uri, uri=True)
+        print(f"✓ Connected to database: {DB_PATH}")
+        
+        # Fetch data
+        query = f"SELECT * FROM telemetry ORDER BY timestamp DESC LIMIT {history_limit}"
+        df = pd.read_sql_query(query, conn)
+        conn.close()
+        print(f"✓ Fetched {len(df)} records from database")
+        
+        if df.empty:
+            print("⚠️ No data found in database")
+            return jsonify({
+                'latest': {},
+                'history': []
+            })
+        
+        # Predict anomalies
+        print("🔮 Running anomaly detection...")
+        df_results = predict_anomalies(df)
+        print(f"✓ Anomaly detection complete")
+        
+        # Get latest and history
+        latest = df_results.iloc[0].to_dict()
+        history = df_results.to_dict('records')
+        
+        print(f"✅ Returning {len(history)} records")
+        return jsonify({
+            'latest': latest,
+            'history': history
+        })
+        
+    except Exception as e:
+        import traceback
+        error_msg = str(e)
+        stack_trace = traceback.format_exc()
+        print(f"❌ ERROR in /telemetry/latest:")
+        print(f"   Error: {error_msg}")
+        print(f"   Stack trace:\n{stack_trace}")
+        return jsonify({'error': error_msg, 'trace': stack_trace}), 500
+
+
+@app.route('/status')
+def get_database_status():
+    """Get database connection status"""
+    try:
+        db_uri = f'file:{DB_PATH}?mode=ro'
+        conn = sqlite3.connect(db_uri, uri=True)
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) FROM telemetry")
+        count = cursor.fetchone()[0]
+        conn.close()
+        
+        return jsonify({
+            'status': 'connected',
+            'connected': True,
+            'total_records': count,
+            'message': f'Database connected with {count} records'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'status': 'disconnected',
+            'connected': False,
+            'message': str(e)
+        }), 500
+
+
+@app.route('/telemetry/anomalies')
+def get_anomalies():
+    """Get only anomalous telemetry data"""
+    try:
+        limit = int(request.args.get('limit', 100))
+        
+        # Connect to database
+        db_uri = f'file:{DB_PATH}?mode=ro'
+        conn = sqlite3.connect(db_uri, uri=True)
+        
+        # Fetch data
+        query = f"SELECT * FROM telemetry ORDER BY timestamp DESC LIMIT {limit * 2}"
+        df = pd.read_sql_query(query, conn)
+        conn.close()
+        
+        if df.empty:
+            return jsonify([])
+        
+        # Predict anomalies
+        df_results = predict_anomalies(df)
+        
+        # Filter only anomalies
+        anomalies = df_results[df_results['is_anomaly'] == 1]
+        
+        return jsonify(anomalies.to_dict('records'))
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 if __name__ == '__main__':
     print("🚀 Starting PUMA Dashboard API Server...")
     print(f"📊 Dashboard: http://localhost:5000")
-    print(f"🔌 API: http://localhost:5000/api/telemetry")
+    print(f"🔌 API Endpoints:")
+    print(f"   - GET /telemetry/latest?history_limit=150")
+    print(f"   - GET /status")
+    print(f"   - GET /telemetry/anomalies")
+    print(f"   - GET /api/telemetry")
+    print(f"   - GET /api/stats")
+    print(f"   - GET /api/health")
     app.run(debug=True, port=5000, host='0.0.0.0')
